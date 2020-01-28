@@ -13,10 +13,10 @@ from sklearn.ensemble import GradientBoostingClassifier
 import matplotlib.pyplot as plt
 
 
-model_data = pd.read_csv('C:/Users/chandiramania/Desktop/Data/train_102919.csv', low_memory=False)
-test_data = pd.read_csv('C:/Users/chandiramania/Desktop/Data/test_102919.csv', low_memory=False)
-lookup_data = pd.read_csv('C:/Users/chandiramania/Desktop/Data/RNL Jan2019 Source Lookup.csv')
-highschool_data = pd.read_csv('C:/Users/chandiramania/Desktop/Data/High_School_Address_Distance_Master_Database.csv')
+model_data = pd.read_csv('../data/test_102919.csv', low_memory=False)
+test_data = pd.read_csv('../data/test_102919.csv', low_memory=False)
+lookup_data = pd.read_csv('../data/RNL Jan2019 Source Lookup.csv')
+highschool_data = pd.read_csv('../data/High_School_Address_Distance_Master_Database.csv')
 
 highschool_data = highschool_data[['school', 'country', 'SUdistance']]
 highschool_data = highschool_data.drop_duplicates(subset=['school', 'country'],keep='first')
@@ -316,8 +316,8 @@ for column in columns:
 
 
 
-        loaded_model = pickle.load(open("C:/Users/chandiramania/Desktop/Data/model.pkl", "rb"))
-        loaded_model_lr = pickle.load(open("C:/Users/chandiramania/Desktop/Data/lr_model.pkl", "rb"))
+        loaded_model = pickle.load(open("../data/model.pkl", "rb"))
+        loaded_model_lr = pickle.load(open("../data/lr_model.pkl", "rb"))
         result = loaded_model.predict_proba(testing_features)[:,1]
         result = pd.DataFrame({"gbm_predictions": result})
 
